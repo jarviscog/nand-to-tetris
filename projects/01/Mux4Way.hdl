@@ -1,0 +1,31 @@
+
+/**
+ * 4-bit multiplexor: 
+ * for i = 0..3 out[i] = a[i] if sel == 0 
+ *                        b[i] if sel == 1
+ */
+
+CHIP Mux4Way {
+    IN a, b, c, d, sel[2];
+    OUT out;
+
+    PARTS:
+    Not (in=sel[0], out=notx);
+    Not (in=sel[1], out=noty);
+
+    And (a=notx, b=noty, out=zero);
+    And (a=sel[0], b=noty, out=one);
+    And (a=sel[1], b=notx, out=two);
+    And (a=sel[0], b=sel[1], out=three);
+    
+    And (a=a, b=zero, out=hashzero);
+    And (a=b, b=one, out=hashone);
+    And (a=c, b=two, out=hashtwo);
+    And (a=d, b=three, out=hashthree);
+
+    Or (a=hashzero, b=hashone, out=finalzero);
+    Or (a=hashtwo, b=hashthree, out=finalone);
+
+    Or (a=finalzero, b=finalone, out=out);
+
+}
