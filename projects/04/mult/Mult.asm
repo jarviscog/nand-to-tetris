@@ -9,4 +9,68 @@
 // This program only needs to handle arguments that satisfy
 // R0 >= 0, R1 >= 0, and R0*R1 < 32768.
 
-// Put your code here.
+// If zero, jump to end
+(zchk)
+@0
+D=M
+@wipe
+D;JEQ
+@1
+D=M
+@wipe
+D;JEQ
+
+// store total iterations in max
+@0
+D=M
+@max
+M=D
+
+// assign num of iterations
+@i
+M=0
+
+// clear total
+@4
+M=0
+
+(loop)
+// add R1 to total 
+@4
+D=M
+@1
+D=D+M
+@4
+M=D
+
+// add to iteration
+@i
+M=M+1
+
+// compare jump
+@i
+D=M
+@max
+D=M-D
+@loop
+D;JGT
+
+// goto end
+@ans
+0;JMP
+
+(wipe)
+@4
+M=0
+@ans
+0;JMP
+
+(ans)
+@4
+D=M
+@2
+M=D
+
+(end)
+@end
+0;JMP
