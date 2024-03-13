@@ -205,7 +205,7 @@ fn main() {
             //println!("  Out line: {:#016b}", out_line);
             let out_line_string = format!("{:016b}", out_line);
             if let Err(e) = writeln!(file, "{}", out_line_string) {
-                eprintln!("Couldn't write to file: {}", e);
+                println!("Couldn't write to file: {}", e);
             }
 
         } else if line.chars().nth(0).unwrap() == '(' { // Label: Ignore
