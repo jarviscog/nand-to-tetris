@@ -8,4 +8,4 @@ NAND to Tetris is a challenge/project where you construct a computer from the ba
 
 Many of the lower-level lessons focous on systems that are taught in electrical/computer engineering, with a lot of the higher-level lessons focusing on more computer science related topics, such as compilers and OO languages.
 
-![Hardware Simulator](https://github.com/timmy6figures/nand-to-tetris/blob/main/image.jpg)
+![Hardware Simulator](https://github.com/jarviscog/nand-to-tetris/blob/main/image.jpg)
